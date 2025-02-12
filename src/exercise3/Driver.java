@@ -5,49 +5,27 @@
 package exercise3;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Driver {
-	// ===== Constants =====
-	private static final int SIZE = 1000;
-	private static final int UPPER_BOUND = 100000000;
-	private static final int RUNS = 5; // Number of sorting runs to average
-
-	// ===== Utility Objects =====
+	private static final int SIZE = 100;
+	private static final int UPPER_BOUND = 1000;
 	private static final Random rand = new Random();
-	private static final Scanner scanner = new Scanner(System.in);
 
-	// ===== Main Method =====
 	public static void main(String[] args) {
 		if (args.length != 1) {
-			System.out.println("Please provide one sorting algorithm choice: b, i, s, or q");
+			System.out.println("Usage: java Driver <b|i|s|q>");
 			return;
 		}
+
 		char choice = args[0].charAt(0);
-		runSortingMenu(choice);
-	}
-
-	// ===== Menu Processing =====
-	private static void runSortingMenu(char choice) {
-		if (choice == 'b' || choice == 'i' || choice == 's' || choice == 'q') {
-			processSort(choice);
-		} else {
-			System.out.println("Invalid choice. Please use b, i, s, or q.");
-		}
-	}
-
-	// ===== Sort Processing =====
-	private static void processSort(char sortChoice) {
 		Integer[] nums = generateRandomArray();
 
-		System.out.println("\nOriginal Array:");
+		// Display original array
+		System.out.println("Original Array:");
 		displayArray(nums);
 
-		System.out.println("\nChosen Algorithm: " + getAlgorithmName(sortChoice));
-
-		// Apply chosen sort (only QuickSort is implemented)
-		long startTime = System.nanoTime();
-		switch (sortChoice) {
+		// Apply chosen sort
+		switch (choice) {
 			case 'b': // Bubble sort - not implemented
 				System.out.println("\nBubble Sort Description:");
 				System.out.println("- Repeatedly steps through the list");
@@ -73,6 +51,7 @@ public class Driver {
 				System.out.println("- Recursively sorts the sub-arrays");
 				System.out.println("- Expected complexity: O(n log n)");
 
+				long startTime = System.nanoTime();
 				QuickSort.sort(nums, 0, SIZE - 1);
 				long endTime = System.nanoTime();
 				long timeTakenNano = endTime - startTime;
@@ -102,22 +81,6 @@ public class Driver {
 		}
 		sb.append("]");
 		System.out.println(sb.toString());
-	}
-
-	// ===== Utility Methods =====
-	private static String getAlgorithmName(char choice) {
-		switch (choice) {
-			case 'b':
-				return "Bubble Sort";
-			case 'i':
-				return "Insertion Sort";
-			case 's':
-				return "Selection Sort";
-			case 'q':
-				return "QuickSort";
-			default:
-				return "Unknown Algorithm";
-		}
 	}
 
 	private static Integer[] generateRandomArray() {
