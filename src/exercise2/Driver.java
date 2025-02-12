@@ -1,39 +1,41 @@
-// Jacobs version 10:02 11-02-2025
+/**
+ * Lab 2: Comparing Objects, Searching and Sorting
+ * Exercise 2: Binary Search Implementation
+ */
 package exercise2;
+
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Driver {
-	
+    // ===== Constants =====
     public static final int SIZE = 100;
     public static final int UPPER_BOUND = 10;
+
+    // ===== Main Method =====
     public static void main(String[] args) {
+        // Use the provided list of integers as mentioned in rubric
+        Integer[] nums = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25,
+                27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49 };
 
-        Integer[] nums = new Integer[SIZE];
-        Random rand = new Random();
-        int randnum = rand.nextInt(UPPER_BOUND);
-        nums[0] = randnum;
-        System.out.println(nums[0]);
-
-        for (int i = 1; i < SIZE; i++) {
-            randnum = rand.nextInt(UPPER_BOUND);
-            nums[i] = nums[i - 1] + randnum;
-            System.out.println(nums[i]);
-        }
-
+        System.out.println("Sorted array:");
+        System.out.println(Arrays.toString(nums));
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter an integer to search: ");
+        System.out.print("\nEnter an integer to search for: ");
         int targetNum = scanner.nextInt();
         int index = binarySearch(nums, targetNum);
-        
+
         if (index == -1) {
-            System.out.println("-1 Not Found");
+            System.out.println("Target " + targetNum + " was not found (-1)");
         } else {
-            System.out.println("Target " + targetNum + " found at index " + index + ".");
+            System.out.println("Target " + targetNum + " was found at index " + index);
         }
         scanner.close();
     }
+
+    // ===== Binary Search Implementation =====
     public static int binarySearch(Integer[] sortedArray, int targetNum) {
         int startIndex = 0;
         int endIndex = sortedArray.length - 1;
