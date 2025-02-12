@@ -1,18 +1,23 @@
+/**
+ * Lab 2: Comparing Objects, Searching and Sorting
+ * Exercise 3: Sorting Implementation
+ */
 package exercise3;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Driver {
-	// Constants
+	// ===== Constants =====
 	private static final int SIZE = 1000;
 	private static final int UPPER_BOUND = 100000000;
 	private static final int RUNS = 5; // Number of sorting runs to average
 
-	// Utility objects
+	// ===== Utility Objects =====
 	private static final Random rand = new Random();
 	private static final Scanner scanner = new Scanner(System.in);
 
+	// ===== Main Method =====
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.out.println("Please provide one sorting algorithm choice: b, i, s, or q");
@@ -22,6 +27,7 @@ public class Driver {
 		runSortingMenu(choice);
 	}
 
+	// ===== Menu Processing =====
 	private static void runSortingMenu(char choice) {
 		if (choice == 'b' || choice == 'i' || choice == 's' || choice == 'q') {
 			processSort(choice);
@@ -30,6 +36,7 @@ public class Driver {
 		}
 	}
 
+	// ===== Sort Processing =====
 	private static void processSort(char sortChoice) {
 		Integer[] nums = generateRandomArray();
 
@@ -83,6 +90,7 @@ public class Driver {
 		displayArray(nums);
 	}
 
+	// ===== Array Display Methods =====
 	private static void displayArray(Integer[] arr) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
@@ -91,15 +99,12 @@ public class Driver {
 			if (i < arr.length - 1) {
 				sb.append(", ");
 			}
-			// Add line break every 10 numbers for readability
-			if ((i + 1) % 10 == 0) {
-				sb.append("\n ");
-			}
 		}
 		sb.append("]");
 		System.out.println(sb.toString());
 	}
 
+	// ===== Utility Methods =====
 	private static String getAlgorithmName(char choice) {
 		switch (choice) {
 			case 'b':

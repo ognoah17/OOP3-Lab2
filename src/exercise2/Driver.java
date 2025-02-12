@@ -1,4 +1,7 @@
-// Jacobs version 10:02 11-02-2025
+/**
+ * Lab 2: Comparing Objects, Searching and Sorting
+ * Exercise 2: Binary Search Implementation
+ */
 package exercise2;
 
 import java.util.Random;
@@ -6,10 +9,11 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class Driver {
-
+    // ===== Constants =====
     public static final int SIZE = 100;
     public static final int UPPER_BOUND = 10;
 
+    // ===== Main Method =====
     public static void main(String[] args) {
         // Use the provided list of integers as mentioned in rubric
         Integer[] nums = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25,
@@ -31,6 +35,7 @@ public class Driver {
         scanner.close();
     }
 
+    // ===== Binary Search Implementation =====
     public static int binarySearch(Integer[] sortedArray, int targetNum) {
         int startIndex = 0;
         int endIndex = sortedArray.length - 1;

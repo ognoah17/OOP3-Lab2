@@ -1,3 +1,7 @@
+/**
+ * Lab 2: Comparing Objects, Searching and Sorting
+ * Exercise 1: Student Comparison Implementation
+ */
 package exercise1;
 
 import java.util.ArrayList;
@@ -5,7 +9,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Driver {
+    // ===== Main Method =====
     public static void main(String[] args) {
+        // ===== Student List Creation =====
         List<Student> studs = new ArrayList<>();
         studs.add(new Student("Smith", 34));
         studs.add(new Student("Johnson", 21));
@@ -18,15 +24,16 @@ public class Driver {
         studs.add(new Student("Anderson", 34));
         studs.add(new Student("Moore", 33));
 
+        // ===== Original List Display =====
         System.out.println("Original List:");
         System.out.println(studs);
 
-        // Sorting by name using Comparable
+        // ===== Name-based Sorting (Comparable) =====
         Collections.sort(studs);
         System.out.println("\nSorted by Name:");
         System.out.println(studs);
 
-        // Sorting by age using Comparator
+        // ===== Age-based Sorting (Comparator) =====
         Collections.sort(studs, new StudentAgeComparator());
         System.out.println("\nSorted by Age:");
         System.out.println(studs);

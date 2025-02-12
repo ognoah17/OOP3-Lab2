@@ -1,7 +1,6 @@
 /**
  * Lab 2: Comparing Objects, Searching and Sorting
  * Exercise 1: Student Comparison
- * Group Members: [List names here if working in group]
  * 
  * This class implements the Comparator interface to compare students
  * based on age with name as secondary sort criteria.
