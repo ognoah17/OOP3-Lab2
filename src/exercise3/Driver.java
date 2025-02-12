@@ -14,33 +14,28 @@ public class Driver {
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		runSortingMenu();
-		scanner.close();
+		if (args.length != 1) {
+			System.out.println("Please provide one sorting algorithm choice: b, i, s, or q");
+			return;
+		}
+		char choice = args[0].charAt(0);
+		runSortingMenu(choice);
 	}
 
-	private static void runSortingMenu() {
-		while (true) {
-			displayMenu();
-			System.out.print("Enter your choice (b/i/s/q to sort, x to exit): ");
-			char choice = scanner.next().charAt(0);
-
-			if (choice == 'x') {
-				System.out.println("Goodbye!");
-				displayJavaInfo();
-				break;
-			}
-
-			if (choice == 'b' || choice == 'i' || choice == 's' || choice == 'q') {
-				processSort(choice);
-			} else {
-				System.out.println("Invalid choice. Please use b, i, s, q, or x to exit.");
-			}
+	private static void runSortingMenu(char choice) {
+		if (choice == 'b' || choice == 'i' || choice == 's' || choice == 'q') {
+			processSort(choice);
+		} else {
+			System.out.println("Invalid choice. Please use b, i, s, or q.");
 		}
 	}
 
 	private static void processSort(char sortChoice) {
 		Integer[] nums = generateRandomArray();
-
+		
+		System.out.println("\nOriginal Array:");
+		displayArray(nums);
+		
 		System.out.println("\nChosen Algorithm: " + getAlgorithmName(sortChoice));
 
 		// Apply chosen sort (only QuickSort is implemented)
@@ -83,6 +78,17 @@ public class Driver {
 				System.out.printf("Actual time: %.2f ms (%d ns)%n", timeInMs, timeTakenNano);
 				break;
 		}
+		
+		System.out.println("\nSorted Array:");
+		displayArray(nums);
+	}
+
+	private static void displayArray(Integer[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+			if ((i + 1) % 10 == 0) System.out.println();
+		}
+		System.out.println();
 	}
 
 	private static void displayMenu() {
