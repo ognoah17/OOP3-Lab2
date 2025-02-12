@@ -1,3 +1,11 @@
+/**
+ * Lab 2: Comparing Objects, Searching and Sorting
+ * Exercise 3: QuickSort Implementation
+ * Group Members: [List names here if working in group]
+ * 
+ * This class implements the QuickSort algorithm in descending order
+ * as required by the lab specifications.
+ */
 package exercise3;
 
 public class QuickSort {

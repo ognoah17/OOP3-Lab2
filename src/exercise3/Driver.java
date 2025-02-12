@@ -32,10 +32,10 @@ public class Driver {
 
 	private static void processSort(char sortChoice) {
 		Integer[] nums = generateRandomArray();
-		
+
 		System.out.println("\nOriginal Array:");
 		displayArray(nums);
-		
+
 		System.out.println("\nChosen Algorithm: " + getAlgorithmName(sortChoice));
 
 		// Apply chosen sort (only QuickSort is implemented)
@@ -78,26 +78,26 @@ public class Driver {
 				System.out.printf("Actual time: %.2f ms (%d ns)%n", timeInMs, timeTakenNano);
 				break;
 		}
-		
+
 		System.out.println("\nSorted Array:");
 		displayArray(nums);
 	}
 
 	private static void displayArray(Integer[] arr) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
 		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-			if ((i + 1) % 10 == 0) System.out.println();
+			sb.append(arr[i]);
+			if (i < arr.length - 1) {
+				sb.append(", ");
+			}
+			// Add line break every 10 numbers for readability
+			if ((i + 1) % 10 == 0) {
+				sb.append("\n ");
+			}
 		}
-		System.out.println();
-	}
-
-	private static void displayMenu() {
-		System.out.println("\nAvailable Sorting Algorithms:");
-		System.out.println("b. Bubble Sort");
-		System.out.println("i. Insertion Sort");
-		System.out.println("s. Selection Sort");
-		System.out.println("q. QuickSort");
-		System.out.println("x. Exit");
+		sb.append("]");
+		System.out.println(sb.toString());
 	}
 
 	private static String getAlgorithmName(char choice) {
@@ -121,14 +121,5 @@ public class Driver {
 			uniqueNums.add(rand.nextInt(UPPER_BOUND));
 		}
 		return uniqueNums.toArray(new Integer[0]);
-	}
-
-	private static void displayJavaInfo() {
-		System.out.println("\nJava Environment Information:");
-		System.out.println("JRE Version: " + System.getProperty("java.version"));
-		System.out.println("JRE Vendor: " + System.getProperty("java.vendor"));
-		System.out.println("Java Home: " + System.getProperty("java.home"));
-		System.out.println("OS Name: " + System.getProperty("os.name"));
-		System.out.println("OS Architecture: " + System.getProperty("os.arch"));
 	}
 }

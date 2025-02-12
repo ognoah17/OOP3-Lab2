@@ -11,31 +11,22 @@ public class Driver {
     public static final int UPPER_BOUND = 10;
 
     public static void main(String[] args) {
-        Integer[] nums = new Integer[SIZE];
-        Random rand = new Random();
+        // Use the provided list of integers as mentioned in rubric
+        Integer[] nums = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25,
+                27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49 };
 
-        // Generate array of random numbers (simpler to test with)
-        for (int i = 0; i < SIZE; i++) {
-            nums[i] = rand.nextInt(UPPER_BOUND);
-        }
-
-        // Sort array for binary search
-        Arrays.sort(nums);
-
-        System.out.println("Generated sorted array:");
-        for (int num : nums) {
-            System.out.println(num);
-        }
+        System.out.println("Sorted array:");
+        System.out.println(Arrays.toString(nums));
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("\nEnter an integer to search (0-" + UPPER_BOUND + "): ");
+        System.out.print("\nEnter an integer to search for: ");
         int targetNum = scanner.nextInt();
         int index = binarySearch(nums, targetNum);
 
         if (index == -1) {
-            System.out.println("-1 Not Found");
+            System.out.println("Target " + targetNum + " was not found (-1)");
         } else {
-            System.out.println("Target " + targetNum + " found at index " + index + ".");
+            System.out.println("Target " + targetNum + " was found at index " + index);
         }
         scanner.close();
     }
